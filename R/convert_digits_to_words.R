@@ -1,5 +1,9 @@
-convert_digits_to_words <- function(x) {
-  output <- as.character(x)
+#' Convert digits (e.g. 1, 2, 3) into English words (one, two, three)
+#' @param digits character or numeric with digits to convert
+#' @return character with digits converted to words
+#' @export
+convert_digits_to_words <- function(digits = NULL) {
+  output <- as.character(digits)
   output <- gsub("0", "zero", output)
   output <- gsub("1", "one", output)
   output <- gsub("2", "two", output)
