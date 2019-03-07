@@ -1,25 +1,22 @@
 #' Convert character vectors that could be numeric, to numeric
-#' @param char character vector that could be numeric
-#' @param threshold proportion of non-numeric values in char
-#' @return a numeric, or a character vector if threshold exceeded
+#' @param char character vector that looks like it's full of numbers
+#' @param threshold numeric proportion of non-numeric values in char
+#' @param ignore_dates logical should dates be returned untransformed
+#' @return if proportion of \code{NAs < threshold} returns numeric, else returns untransformed
 #' @export
 convert_char_to_numeric <- function(char = NULL, 
-                                    threshold = .8) {
-  # calculate the proportion of NAs
-  sum_nas <- sum(is.na(as.numeric(char)))
-  proportion_nas <- sum_nas / length(char)
-  # if threshold not exceeded, quietly convert to numeric
-  if (proportion_nas <= threshold) {
-    output <- suppressWarnings(
-      as.numeric(char)
-      )
-    return(output)
+                                    threshold = .8,
+                                    ignore_dates = TRUE) {
+  # handle dates
+  if (ignore_dates == TRUE & lubridate::is.instant(char)) {
+    return(char)
   }
-  # if threshold exceeded message and exit
-  if (na_ratio > threshold) {
-    message("proportion_nas = ", proportion_nas, 
-            " which exceeds threshold of ", threshold,
-            "; returning char")
+  # convert char to numeric; we expect NAs, so suppressing warnings
+  numchar <- suppressWarnings(as.numeric(char))
+  # check if proportion of NAs is at or below threshold, and return accordingly
+  if (sum(is.na(numchar)) / length(char) <= threshold) {
+    return(numchar)
+  } else {
     return(char)
   }
 }

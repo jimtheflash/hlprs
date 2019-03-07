@@ -4,15 +4,18 @@
 \alias{convert_char_to_numeric}
 \title{Convert character vectors that could be numeric, to numeric}
 \usage{
-convert_char_to_numeric(char = NULL, threshold = 0.8)
+convert_char_to_numeric(char = NULL, threshold = 0.8,
+  ignore_dates = TRUE)
 }
 \arguments{
-\item{char}{character vector that could be numeric}
+\item{char}{character vector that looks like it's full of numbers}
 
-\item{threshold}{proportion of non-numeric values in char}
+\item{threshold}{numeric proportion of non-numeric values in char}
+
+\item{ignore_dates}{logical should dates be returned untransformed}
 }
 \value{
-a numeric, or a character vector if threshold exceeded
+if proportion of \code{NAs < threshold} returns numeric, else returns untransformed
 }
 \description{
 Convert character vectors that could be numeric, to numeric
