@@ -2,7 +2,7 @@
 % Please edit documentation in R/convert_digits_to_words.R
 \name{convert_digits_to_words}
 \alias{convert_digits_to_words}
-\title{Convert digits (e.g. 1, 2, 3) into English words (one, two, three)}
+\title{Convert digits into English words}
 \usage{
 convert_digits_to_words(digits = NULL)
 }
@@ -13,5 +13,5 @@ convert_digits_to_words(digits = NULL)
 character with digits converted to words
 }
 \description{
-Convert digits (e.g. 1, 2, 3) into English words (one, two, three)
+Convert single digits (e.g. 1, 2, 3) into English words (one, two, three); does not yet support numbers with multiple digits
 }

@@ -1,5 +1,6 @@
-#' Convert digits (e.g. 1, 2, 3) into English words (one, two, three)
+#' Convert digits into English words
 #' @param digits character or numeric with digits to convert
+#' @description Convert single digits (e.g. 1, 2, 3) into English words (one, two, three); does not yet support numbers with multiple digits
 #' @return character with digits converted to words
 #' @export
 convert_digits_to_words <- function(digits = NULL) {
