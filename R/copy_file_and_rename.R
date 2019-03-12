@@ -8,5 +8,5 @@ copy_file_and_rename <- function(file_to_move = NULL,
                                  new_dir = NULL,
                                  new_name = NULL) {
   new_path <- paste0(new_dir, "/", new_name)
-  file.copy(file_to_move, new_path)
+  file.copy(file_to_move, new_path, overwrite = TRUE)
 }
